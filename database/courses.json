@@ -1,0 +1,232 @@
+[
+    {
+        "id": 1,
+        "title": "Web Development Basics",
+        "description": "Learn the fundamentals of web development including HTML, CSS, and JavaScript.",
+        "modules": [
+            {
+                "title": "HTML Basics",
+                "order": "1",
+                "lessons": [
+                    {
+                        "title": "Introduction to HTML",
+                        "content": "Learn the basics of HTML tags and structure",
+                        "mediaType": "video",
+                        "mediaUrl": "https://www.youtube.com/watch?v=29l2qxSJSIw",
+                        "order": "1"
+                    }
+                ],
+                "tests": [
+                    {
+                        "title": "HTML Basics Test",
+                        "questions": [
+                            {
+                                "question": "What is the purpose of the <head> tag in an HTML document?",
+                                "answers": [
+                                    "Defines the body of the document",
+                                    "Contains metadata and links to external resources",
+                                    "Displays the main content of the page"
+                                ],
+                                "correct_answer": "Contains metadata and links to external resources"
+                            },
+                            {
+                                "question": "Which tag is used to create a hyperlink in HTML?",
+                                "answers": [
+                                    "<link>",
+                                    "<a>",
+                                    "<href>",
+                                    "<button>"
+                                ],
+                                "correct_answer": "<a>"
+                            },
+                            {
+                                "question": "What does the <img> tag do in HTML?",
+                                "answers": [
+                                    "Displays an image",
+                                    "Defines a list item",
+                                    "Creates a link",
+                                    "Formats text"
+                                ],
+                                "correct_answer": "Displays an image"
+                            },
+                            {
+                                "question": "Which of the following is the correct syntax for a comment in HTML?",
+                                "answers": [
+                                    "<!-- This is a comment -->",
+                                    "<comment>This is a comment</comment>",
+                                    "// This is a comment",
+                                    "/ This is a comment /"
+                                ],
+                                "correct_answer": "<!-- This is a comment -->"
+                            },
+                            {
+                                "question": "What does the <title> tag define in an HTML document?",
+                                "answers": [
+                                    "The main content of the page",
+                                    "The title of the page that appears in the browser tab",
+                                    "The navigation menu",
+                                    "The footer of the page"
+                                ],
+                                "correct_answer": "The title of the page that appears in the browser tab"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "title": "Introduction to Python Programming",
+        "description": "Learn the fundamentals of Python programming, including syntax, data structures, and basic algorithms, through engaging lessons and hands-on exercises.",
+        "modules": [
+            {
+                "title": "Getting Started with Python",
+                "order": "1",
+                "lessons": [
+                    {
+                        "title": "Introduction to Python and Setting Up the Environment",
+                        "content": "In this lesson, you'll learn about Python's history, its advantages, and how to set up a Python development environment on your computer.",
+                        "mediaType": "video",
+                        "mediaUrl": "https://www.youtube.com/watch?v=1x6bhWur-kE",
+                        "order": "1"
+                    }
+                ],
+                "tests": [
+                    {
+                        "title": "Python Basics Quiz",
+                        "questions": [
+                            {
+                                "question": "What is the correct way to initialize a variable in Python?",
+                                "options": [
+                                    "1. var x = 10;",
+                                    "2. let x = 10;",
+                                    "3. x = 10",
+                                    "4. int x = 10;"
+                                ],
+                                "correct_answer": 3
+                            },
+                            {
+                                "question": "Which of the following is NOT a valid Python data type?",
+                                "options": [
+                                    "1. List",
+                                    "2. Tuple",
+                                    "3. Float",
+                                    "4. DictionarySet"
+                                ],
+                                "correct_answer": 4
+                            },
+                            {
+                                "question": "What will the following code output: `print(type(10))`?",
+                                "options": [
+                                    "1. <class 'float'>",
+                                    "2. <class 'int'>",
+                                    "3. <class 'str'>",
+                                    "4. <class 'bool'>"
+                                ],
+                                "correct_answer": 2
+                            },
+                            {
+                                "question": "Which operator is used to perform exponentiation in Python?",
+                                "options": [
+                                    "1. *",
+                                    "2. **",
+                                    "3. ^",
+                                    "4. exp"
+                                ],
+                                "correct_answer": 2
+                            },
+                            {
+                                "question": "What is the output of the following code: `print(2 + 3 * 4)`?",
+                                "options": [
+                                    "1. 20",
+                                    "2. 14",
+                                    "3. 24",
+                                    "4. 10"
+                                ],
+                                "correct_answer": 2
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "title": "Introduction to Web Development with HTML and CSS",
+        "description": "This course will introduce you to the fundamentals of web development. You'll learn how to structure web pages with HTML and style them with CSS to create beautiful, responsive websites.",
+        "modules": [
+            {
+                "title": "Getting Started with Web Development",
+                "order": "1",
+                "lessons": [
+                    {
+                        "title": "Introduction to Web Development and Tools",
+                        "content": "In this lesson, you'll learn about the basics of web development, including front-end and back-end technologies, and how to set up your development environment.",
+                        "mediaType": "video",
+                        "mediaUrl": "https://www.youtube.com/watch?v=k5li3d_2U7c",
+                        "order": "1"
+                    }
+                ],
+                "tests": [
+                    {
+                        "title": "HTML and CSS Basics Quiz",
+                        "questions": [
+                            {
+                                "question": "Which tag is used to define a hyperlink in HTML?",
+                                "options": [
+                                    "1. <link>",
+                                    "2. <a>",
+                                    "3. <href>",
+                                    "4. <hyperlink>"
+                                ],
+                                "correct_answer": 2
+                            },
+                            {
+                                "question": "What is the correct syntax to link an external CSS file in HTML?",
+                                "options": [
+                                    "1. <link rel='stylesheet' href='styles.css'>",
+                                    "2. <style src='styles.css'>",
+                                    "3. <css src='styles.css'>",
+                                    "4. <script href='styles.css'></script>"
+                                ],
+                                "correct_answer": 1
+                            },
+                            {
+                                "question": "Which CSS property is used to change the text color?",
+                                "options": [
+                                    "1. text-color",
+                                    "2. color",
+                                    "3. font-color",
+                                    "4. text-style"
+                                ],
+                                "correct_answer": 2
+                            },
+                            {
+                                "question": "What is the default display value of a <div> element in CSS?",
+                                "options": [
+                                    "1. inline",
+                                    "2. block",
+                                    "3. flex",
+                                    "4. none"
+                                ],
+                                "correct_answer": 2
+                            },
+                            {
+                                "question": "Which CSS property is used to change the font size of text?",
+                                "options": [
+                                    "1. font-size",
+                                    "2. text-size",
+                                    "3. font-style",
+                                    "4. size"
+                                ],
+                                "correct_answer": 1
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

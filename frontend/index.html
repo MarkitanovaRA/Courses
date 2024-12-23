@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Courses</title>
+  <style>
+    /* Общие стили */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #4caf50, #2196f3);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    nav a:hover {
+      background: #fff;
+      color: #4caf50;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    main h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    main p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      max-width: 600px;
+    }
+
+    footer {
+      background: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+
+    /* Адаптивность */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-start;
+      }
+
+      main h2 {
+        font-size: 1.5rem;
+      }
+
+      main p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Course Platform</h1>
+    <nav>
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+      <a href="courses.html">Courses</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Welcome to the Course Platform</h2>
+    <p>Explore and manage courses effectively! Whether you're a student or a teacher, you'll find everything you need right here.</p>
+  </main>
+
+  <footer>
+    © 2024 Course Platform.
+  </footer>
+</body>
+</html>

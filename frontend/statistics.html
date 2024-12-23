@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Статистика отзывов</title>
+  <style>
+    /* Основные стили страницы */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f7f6;
+      color: #333;
+    }
+
+    /* Стиль заголовка */
+    h1 {
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    /* Контейнер для статистики */
+    #statistics-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+    }
+
+    /* Общие стили для статистики */
+    .stat {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      margin: 15px;
+      padding: 20px;
+      width: 100%;
+      max-width: 500px;
+      text-align: left;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    /* Стили для отдельных блоков статистики */
+    .stat strong {
+      color: #4CAF50;
+      font-size: 1.1rem;
+    }
+
+    .stat ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .stat li {
+      padding: 5px 0;
+      font-size: 1rem;
+    }
+
+    /* Стили для плавного увеличения карточки */
+    .stat:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Стиль для загрузки */
+    #loading {
+      font-size: 1.2rem;
+      color: #555;
+      font-style: italic;
+      text-align: center;
+    }
+
+    /* Адаптивные стили для мобильных устройств */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .stat {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Статистика отзывов</h1>
+  <div id="statistics-container">
+    <div id="loading">Загрузка данных...</div>
+  </div>
+
+  <script>
+    function loadReviews() {
+      return fetch('http://127.0.0.1:5000/database/reviews.json')  // Указываем правильный порт
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Не удалось загрузить файл reviews.json');
+          }
+          return response.json(); // Преобразование данных в JSON
+        })
+        .then(data => {
+          console.log('Reviews data:', data);
+          return data;  // Возвращаем данные для дальнейшего использования
+        })
+        .catch(error => {
+          console.error('Error loading reviews data:', error);
+        });
+    }
+
+    // Функция для отправки данных на сервер
+    function sendReviewsToServer(reviews) {
+      return fetch('http://localhost:8080/reviews', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ reviews })
+      })
+      .then(response => response.json())
+      .catch(error => {
+        console.error('Error sending reviews:', error);
+        throw new Error('Ошибка отправки данных');
+      });
+    }
+
+    // Функция для получения статистики с сервера
+    function getStatistics() {
+      return fetch('http://localhost:8080/analyze')
+        .then(response => response.json())
+        .catch(error => {
+          console.error('Error fetching statistics:', error);
+          throw new Error('Ошибка загрузки статистики');
+        });
+    }
+
+    // Основной процесс
+    async function loadAndAnalyzeReviews() {
+      try {
+        // Загружаем отзывы из файла
+        const reviewsData = await loadReviews();
+        // Просто извлекаем reviews, так как reviewsData - это объект с полем 'reviews'
+        const reviews = reviewsData.reviews;
+
+        // Сохраняем отзывы в локальное хранилище или переменную
+        window.reviews = reviews;
+
+        // Отправляем данные на сервер
+        const sendResponse = await sendReviewsToServer(reviews);
+        if (sendResponse.error) {
+          throw new Error(sendResponse.error);
+        }
+
+        // Получаем статистику
+        const statsData = await getStatistics();
+        if (statsData.error) {
+          throw new Error(statsData.error);
+        }
+
+        // Отображаем статистику на странице
+        const { positive_percentage, negative_percentage, most_common_words } = statsData;
+
+        const statsHTML = `
+          <div class="stat">
+            <strong>Положительные отзывы:</strong> ${positive_percentage.toFixed(2)}%
+          </div>
+          <div class="stat">
+            <strong>Негативные отзывы:</strong> ${negative_percentage.toFixed(2)}%
+          </div>
+          <div class="stat">
+            <strong>Наиболее часто встречающиеся слова:</strong>
+            <ul>
+              ${most_common_words.map(([word, count]) => `<li>${word}: ${count}</li>`).join('')}
+            </ul>
+          </div>
+        `;
+
+        document.getElementById('statistics-container').innerHTML = statsHTML;
+
+      } catch (error) {
+        // Если произошла ошибка на любом из шагов
+        document.getElementById('statistics-container').innerText = error.message;
+      }
+    }
+
+    // Загружаем и анализируем отзывы при загрузке страницы
+    loadAndAnalyzeReviews();
+  </script>
+</body>
+</html>

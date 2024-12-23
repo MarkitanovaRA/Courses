@@ -1,0 +1,12 @@
+[
+    {
+        "title": "Introduction to Python Programming",
+        "description": "Learn the fundamentals of Python programming, including syntax, data structures, and basic algorithms, through engaging lessons and hands-on exercises.",
+        "qr_code_path": "database\\qr_codes\\Introduction to Python Programming.png"
+    },
+    {
+        "title": "Introduction to Web Development with HTML and CSS",
+        "description": "This course will introduce you to the fundamentals of web development. You'll learn how to structure web pages with HTML and style them with CSS to create beautiful, responsive websites.",
+        "qr_code_path": "database\\qr_codes\\Introduction to Web Development with HTML and CSS.png"
+    }
+]

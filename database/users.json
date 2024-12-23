@@ -1,0 +1,9 @@
+[
+    {
+        "id": 1,
+        "username": "test",
+        "email": "test@mail.ru",
+        "password": "scrypt:32768:8:1$vgvAgdbJrw2xkCHK$bd762b24290d817d7f516c61472b762459d930e4fda0009bffc93b831270abca370eec0ebb3866cb8a8016ff91aee70e8388777009d3cd2d5c72726c6c12616b",
+        "role": "teacher"
+    }
+]

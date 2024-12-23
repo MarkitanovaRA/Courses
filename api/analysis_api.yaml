@@ -1,0 +1,135 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "АПИ для анализа комментариев",
+    "description": "Данный апи предназначен для анализа комментариев и отзывов. Он принимает на вход JSON-файл с массивом комментариев. Далее производит анализ и выдает самые распространенные слова в отзывах, а также анализирует, сколько было негативных отзывов, а сколько позитивных в процентах.",
+    "version": "0.0.1"
+  },
+  "host": "localhost:8080",
+  "schemes": ["http"],
+  "paths": {
+    "/reviews": {
+      "post": {
+        "summary": "Добавление отзывов для анализа",
+        "description": "Добавить список отзывов в базу данных для дальнейшего анализа.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "reviews": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "Массив текстов отзывов для добавления."
+                }
+              },
+              "required": ["reviews"]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Успешно добавлено.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": { "type": "string" },
+                "total_reviews": { "type": "integer" }
+              }
+            }
+          },
+          "400": {
+            "description": "Некорректный ввод или отзывы отсутствуют.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/analyze": {
+      "get": {
+        "summary": "Анализ добавленных отзывов",
+        "description": "Проведение анализа тональности и частотности слов в сохраненных отзывах.",
+        "responses": {
+          "200": {
+            "description": "Результаты анализа.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "positive_percentage": { "type": "number" },
+                "negative_percentage": { "type": "number" },
+                "most_common_words": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "items": [
+                      { "type": "string" },
+                      { "type": "integer" }
+                    ]
+                  },
+                  "description": "Список самых частых слов и их частотность."
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Отзывы для анализа отсутствуют.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/results": {
+      "get": {
+        "summary": "Последние результаты анализа",
+        "description": "Получить результаты последнего анализа отзывов.",
+        "responses": {
+          "200": {
+            "description": "Результаты анализа.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "positive_percentage": { "type": "number" },
+                "negative_percentage": { "type": "number" },
+                "most_common_words": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "items": [
+                      { "type": "string" },
+                      { "type": "integer" }
+                    ]
+                  },
+                  "description": "Список самых частых слов и их частотность."
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Результаты анализа отсутствуют.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

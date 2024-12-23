@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Write Review</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #8e44ad, #3498db);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .rating {
+      margin: 1rem 0;
+    }
+
+    .rating label {
+      margin-right: 10px;
+    }
+
+    textarea {
+      width: 100%;
+      max-width: 500px;
+      padding: 1rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-bottom: 1rem;
+      background: #fff;
+      color: #000;
+    }
+
+    button {
+      background: #3498db;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #2980b9;
+    }
+
+    footer {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #fff;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>Write a Review</h1>
+
+  <form id="review-form">
+    <div class="rating">
+      <label for="rating">Rating:</label>
+      <select id="rating" name="rating">
+        <option value="1">1 Star</option>
+        <option value="2">2 Stars</option>
+        <option value="3">3 Stars</option>
+        <option value="4">4 Stars</option>
+        <option value="5">5 Stars</option>
+      </select>
+    </div>
+
+    <textarea id="comment" name="comment" rows="4" placeholder="Write your comment here..."></textarea>
+
+    <button type="submit">Submit Review</button>
+  </form>
+
+  <footer>
+    © 2024 Course Platform.
+  </footer>
+
+  <script>
+    const reviewForm = document.getElementById('review-form');
+
+    reviewForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const rating = document.getElementById('rating').value;
+      const comment = document.getElementById('comment').value;
+      const course_id = 1; // Example: The course ID, adjust as necessary
+
+      // Send review data to server
+      fetch('/submit_review', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ rating, comment, course_id }),
+      })
+      .then(response => response.json())
+      .then(data => {
+        alert(data.message); // Show success or error message
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('There was an error submitting your review.');
+      });
+    });
+  </script>
+</body>
+</html>
